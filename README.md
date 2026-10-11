@@ -145,6 +145,9 @@ The constructor must accept the `Analyzer` used for the corpus: that's how your 
 You may also replace or tune the analysis pipeline, e.g. add stop words via
 `CodeAnalyzer(stopWords = ...)`, disable compound tokens or write your own `Analyzer`.
 
+The baseline engine, `SimpleSearchEngine` searches for the documents that contain all search terms and
+always assigns rank 1 to all matching documents. Your search engine needs to implement some sort of ranking.
+
 ### Plugging in your engine
 
 The places to change are marked with `TODO` comments in `src/main/kotlin/Main.kt`:
@@ -167,7 +170,7 @@ instance is passed both to the corpus tokenizer and to your engine.
 
 ## 3. Running unit tests
 
-Requirements: JDK 21 (Gradle downloads it automatically if missing). Run all tests:
+Requirements: JDK 21. Run all tests:
 
 ```shell
 ./gradlew test
@@ -196,3 +199,20 @@ The existing tests in `src/test/kotlin` cover the framework and are good example
 
 Put the tests for your engine next to them, in `src/test/kotlin/search`.
 `SimpleSearchEngineTest` shows how to build a small in-memory corpus without files on disk.
+
+## 3. Search quality evaluation
+
+Take the attached code of a toy database engine (you have seen it before, in the first assignment), 
+unzip it and run your search engine against the sources.
+
+Your implementation should do its best to provide relevant results for the following queries:
+
+```
+class page
+scan records
+storage
+PageImpl
+storage.*manager
+```
+
+Print top 5 results that your implementation considers to be the most relevant.  
