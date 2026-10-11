@@ -21,7 +21,7 @@ kotlin {
 }
 
 application {
-    mainClass = "org.jetbrains.edu.sed2026.MainKt"
+    mainClass = "org.jetbrains.edu.aads2026.MainKt"
 }
 
 tasks.named<JavaExec>("run") {

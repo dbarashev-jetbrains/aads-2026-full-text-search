@@ -22,9 +22,7 @@ import kotlin.time.measureTimedValue
  */
 val SEARCH_ENGINES: Map<String, SearchEngineFactory> = mapOf(
     "simple" to ::SimpleSearchEngine,
-    // TODO: register your implementation of SearchEngine here, e.g.
-    //   "student" to ::StudentSearchEngine,
-    // and run the client with `--engine student`.
+    "student" to { TODO("Register your implementation of SearchEngine here")} ,
 )
 
 // TODO: once your engine works, you may make it the default one.
